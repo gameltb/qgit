@@ -2541,7 +2541,7 @@ void Git::loadFileNames() {
         QString diffTreeBuf;
         FOREACH (ShaVect, it, revData->revOrder) {
 
-                if (!revsFiles.contains(*it)) {
+                if (!it->isNull() && !revsFiles.contains(*it)) {
                         const Rev* c = revLookup(*it);
                         if (c->parentsCount() == 1) { // skip initials and merges
                                 diffTreeBuf.append(*it).append('\n');
